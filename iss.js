@@ -67,32 +67,12 @@ const nextISSTimesForMyLocation = (callback) => {
          if (err) {
            return callback(err, null);
          }
-          
           callback(null, passTimes);
         });
     });
  });
 }
 
-// const fetchMyIP = () => {
-//   return new Promise((resolve, reject) => {
-//     request("https://api.ipify.org?format=json", (err, res, body) => {
-//       if (err) {
-//         reject(err);
-//         return;
-//       }
-
-//       if (res.statusCode !== 200) {
-//         const msg = `Status code ${res.statusCode} when fetching IP. Response: ${body}`;
-//         reject(Error(msg));
-//         return;
-//       }
-
-//       const data = JSON.parse(body).ip;
-//       resolve(data);
-//     });
-//   });
-// };
 
 
 module.exports = { nextISSTimesForMyLocation };

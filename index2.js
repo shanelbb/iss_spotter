@@ -1,4 +1,4 @@
-const { nextISSTimesForMyLocation } = require('./iss');
+const { nextISSTimesForMyLocation } = require('./iss_promised');
 
 const printPassTimes = function (passTimes) {
   for (const pass of passTimes) {
@@ -9,10 +9,10 @@ const printPassTimes = function (passTimes) {
   }
 };
 
-nextISSTimesForMyLocation((err, passTimes) => {
-  if (err) {
-    return console.log('It didn\'t work!', err);
-  }
-  // success, print out the deets!
-  printPassTimes(passTimes);
-});
+nextISSTimesForMyLocation()
+  .then((passTimes) => {
+    printPassTimes(passTimes)
+  })
+  .catch((err) => console.log("It didn't work: ", err.message));
+
+  
